@@ -9,3 +9,8 @@ length = ordersObject.get_length()
 def home():
     welcome_message1 = "Hello! Welcome to SendIT - see orders here. "
     return welcome_message1
+
+@app.route('/api/v1/create_order', methods=['POST'])
+def create_new_order():
+    orders = ordersObject.new_orders()
+    return jsonify({"orders: " :orders}), 201
