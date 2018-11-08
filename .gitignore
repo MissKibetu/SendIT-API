@@ -1,0 +1,9 @@
+#Files and folders
+*.pyc
+.settings/
+.vscode/
+venv/
+__pycache__/
+.env
+*__pycache__
+.pytest_cache
