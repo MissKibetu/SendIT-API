@@ -45,7 +45,7 @@ class TestOrders(unittest.TestCase):
 		result = self.client.get('/api/v1/all_orders/1', data = json.dumps(self.orders_list), content_type='application/json')
 		self.assertEqual(result.status_code, 200)
 
-	"""Test to check that a message is returned if the parcelID does not exist"""
+	
 	def test_get_all_orders_by_parcelID_4(self):
 		result = self.client.get('/api/v1/all_orders/4', data = json.dumps(self.orders_list), content_type='application/json')
 		self.assertEqual(result.status_code, 200)
