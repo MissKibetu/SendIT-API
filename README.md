@@ -17,3 +17,5 @@
 | EndPoint                      	| Functionality                    				|  Actual routes                			|
 | :---                          	| :---:                        				    |  :---:                      			    |
 | POST /create order            	| Create a parcel order            				|  /api/v1/create_order              		|
+| GET /all parcel orders        	| Get all available orders         				|  /api/v1/all_orders             			|
+
