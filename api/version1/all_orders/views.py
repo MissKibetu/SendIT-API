@@ -10,10 +10,14 @@ def home():
     welcome_message1 = "Hello! Welcome to SendIT - see orders here. "
     return welcome_message1
 
+"""This route creates and adds new order to currents order list"""
+
 @app.route('/api/v1/create_order', methods=['POST'])
 def create_new_order():
     orders = ordersObject.new_orders()
     return jsonify({"orders: " :orders}), 201
+
+"""This route fetches all orders in the system"""
 
 @app.route('/api/v1/all_orders', methods=['GET'])
 def get_all_orders():
