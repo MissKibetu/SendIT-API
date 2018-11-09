@@ -11,3 +11,9 @@
 * Get a specific parcel delivery order by ID
 * Get a specific parcel delivery order by ID
 * Cancel a parcel delivery order
+
+## Functioning endpoints:
+
+| EndPoint                      	| Functionality                    				|  Actual routes                			|
+| :---                          	| :---:                        				    |  :---:                      			    |
+| POST /create order            	| Create a parcel order            				|  /api/v1/create_order              		|
