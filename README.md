@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://travis-ci.org/MissKibetu/SendIT-API.svg?branch=ft-create-order-161827472)](https://travis-ci.org/MissKibetu/SendIT-API)
-[![Coverage Status](https://coveralls.io/repos/github/MissKibetu/SendIT-API/badge.svg)](https://coveralls.io/github/MissKibetu/SendIT-API)
+[![Coverage Status](https://coveralls.io/repos/github/MissKibetu/SendIT-API/badge.svg?branch=ft-get-orders-by-parcelID-161834945)](https://coveralls.io/github/MissKibetu/SendIT-API?branch=ft-get-orders-by-parcelID-161834945)
 
 ## The endpoints to be created should enable the user to
 
