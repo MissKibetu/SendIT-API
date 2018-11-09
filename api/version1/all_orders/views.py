@@ -24,7 +24,16 @@ def get_all_orders():
     orders = ordersObject.all_orders()
     return jsonify({"orders: " :orders}), 200
 
+"""This route fetches the order with the id specified in the route"""
+
 @app.route('/api/v1/all_orders/<int:parcelID>', methods=['GET'])
 def get_all_orders_by_parcelID(parcelID):
     orders = ordersObject.all_orders_by_parcelID(parcelID)
+    return jsonify({"orders: " :orders}), 200
+
+"""This route fetches the orders from the email specified in the route"""
+
+@app.route('/api/v1/all_orders/<string:sender_email>', methods=['GET'])
+def get_all_orders_by_sender_email(sender_email):
+    orders = ordersObject.all_orders_by_sender_email(sender_email)
     return jsonify({"orders: " :orders}), 200
