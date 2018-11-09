@@ -61,3 +61,9 @@ class SendItOrders():
 		if len(orders_list) == 0:
 			return {"message" : "No orders in the system"}
 		return orders_list
+
+	def all_orders_by_parcelID(self, parcelID):
+		order = [order for order in orders_list if order['parcelID'] == parcelID]
+		if order:
+			return order
+		return {"message" : "No orders with that ID"}

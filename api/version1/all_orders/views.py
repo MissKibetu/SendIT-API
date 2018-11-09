@@ -23,3 +23,8 @@ def create_new_order():
 def get_all_orders():
     orders = ordersObject.all_orders()
     return jsonify({"orders: " :orders}), 200
+
+@app.route('/api/v1/all_orders/<int:parcelID>', methods=['GET'])
+def get_all_orders_by_parcelID(parcelID):
+    orders = ordersObject.all_orders_by_parcelID(parcelID)
+    return jsonify({"orders: " :orders}), 200
