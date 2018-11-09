@@ -67,3 +67,9 @@ class SendItOrders():
 		if order:
 			return order
 		return {"message" : "No orders with that ID"}
+
+	def all_orders_by_sender_email(self, sender_email):
+		order = [order for order in orders_list if order['sender_email'] == sender_email]
+		if order:
+			return order
+		return {"message" : "No orders made from that email address"}
