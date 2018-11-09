@@ -31,6 +31,7 @@ class SendItOrders():
 		length = len(orders_list)
 		return length
 
+	"""creates and adds new order to currents order list"""
 	def new_orders(self):
 		
 		new_order = {
@@ -57,6 +58,7 @@ class SendItOrders():
 			
 		return orders_list[-1]
 
+	"""fetch all orders in the system"""
 	def all_orders(self):
 		if len(orders_list) == 0:
 			return {"message" : "No orders in the system"}
