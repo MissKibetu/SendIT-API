@@ -56,3 +56,8 @@ class SendItOrders():
 			return {"message" : "weight cannot be zero "}
 			
 		return orders_list[-1]
+
+	def all_orders(self):
+		if len(orders_list) == 0:
+			return {"message" : "No orders in the system"}
+		return orders_list
