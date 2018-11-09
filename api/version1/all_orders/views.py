@@ -37,3 +37,10 @@ def get_all_orders_by_parcelID(parcelID):
 def get_all_orders_by_sender_email(sender_email):
     orders = ordersObject.all_orders_by_sender_email(sender_email)
     return jsonify({"orders: " :orders}), 200
+
+"""This route cancels the order with the id specified in the route"""
+
+@app.route('/api/v1/cancel/<int:parcelID>', methods=['PUT'])
+def cancel_orders_by_parcelID(parcelID):
+    orders = ordersObject.cancel_orders(parcelID)
+    return jsonify({"orders: " :orders}), 200

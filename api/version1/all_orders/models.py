@@ -73,3 +73,14 @@ class SendItOrders():
 		if order:
 			return order
 		return {"message" : "No orders made from that email address"}
+
+	def cancel_orders(self, parcelID):
+		order = [order for order in orders_list if (order['parcelID'] == parcelID and order['status'] !='Delivered')]
+		if order:
+			order[0]["status"] = request.json["status"]
+			if order[0]["status"] == "Cancelled":
+				return order
+			
+			order[0]["status"] = "Cancelled"
+			return order
+		return {"message" : "order cannot be cancelled."}
