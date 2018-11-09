@@ -18,4 +18,4 @@
 | :---                          	| :---:                        				    |  :---:                      			    |
 | POST /create order            	| Create a parcel order            				|  /api/v1/create_order              		|
 | GET /all parcel orders        	| Get all available orders         				|  /api/v1/all_orders             			|
-
+| GET /parcel order/<parcelId>   	| Fetch a single order details by parcelId     	|  /api/v1/all_orders/<int:parcelID>     	|
