@@ -14,3 +14,8 @@ def home():
 def create_new_order():
     orders = ordersObject.new_orders()
     return jsonify({"orders: " :orders}), 201
+
+@app.route('/api/v1/all_orders', methods=['GET'])
+def get_all_orders():
+    orders = ordersObject.all_orders()
+    return jsonify({"orders: " :orders}), 200
