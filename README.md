@@ -20,3 +20,11 @@
 | GET /all parcel orders        	| Get all available orders         				|  /api/v1/all_orders             			|
 | GET /parcel order/<parcelId>   	| Fetch a single order details by parcelId     	|  /api/v1/all_orders/<int:parcelID>     	|
 | GET /parcel order/<sender email>  | Fetch a single order details by sender email  |  /api/v1/all_orders/<string:sender_email> |
+| PUT /cancel order/<orderId>		| Cancel order (change status to cancelled)    	|  /api/v1/cancel/<int:parcelID>     		|
+
+
+## Technology used
+
+- Python 3.7
+- Flask framework
+- Unittest for testing
