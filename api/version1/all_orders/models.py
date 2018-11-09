@@ -83,4 +83,4 @@ class SendItOrders():
 			
 			order[0]["status"] = "Cancelled"
 			return order
-		return {"message" : "order cannot be cancelled."}
+		return {"message" : "order cannot be cancelled"}
