@@ -46,6 +46,16 @@ class TestOrders(unittest.TestCase):
 		self.assertEqual(result.status_code, 200)
 
 	"""Test to check that a message is returned if the parcelID does not exist"""
-	def test_get_all_orders_by_parcelID_4(self):
+	def test_get_all_orders_by_parcelID_2(self):
 		result = self.client.get('/api/v1/all_orders/4', data = json.dumps(self.orders_list), content_type='application/json')
+		self.assertEqual(result.status_code, 200)
+
+	"""Test get orders by sender email"""
+	def test_get_all_orders_by_sender_email(self):
+		result = self.client.get('/api/v1/all_orders/johndoe@test.com', data = json.dumps(self.orders_list), content_type='application/json')
+		self.assertEqual(result.status_code, 200)
+
+	"""Test to check that a message is returned if the email does not exist"""
+	def test_get_all_orders_by_sender_email_2(self):
+		result = self.client.get('/api/v1/all_orders/jacky@test.com', data = json.dumps(self.orders_list), content_type='application/json')
 		self.assertEqual(result.status_code, 200)
