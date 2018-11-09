@@ -64,18 +64,21 @@ class SendItOrders():
 			return {"message" : "No orders in the system"}
 		return orders_list
 
+	"""fetch all orders in the system by ID"""
 	def all_orders_by_parcelID(self, parcelID):
 		order = [order for order in orders_list if order['parcelID'] == parcelID]
 		if order:
 			return order
 		return {"message" : "No orders with that ID"}
 
+	"""fetch all orders in the system by email"""
 	def all_orders_by_sender_email(self, sender_email):
 		order = [order for order in orders_list if order['sender_email'] == sender_email]
 		if order:
 			return order
 		return {"message" : "No orders made from that email address"}
 
+	"""cancel orders"""
 	def cancel_orders(self, parcelID):
 		order = [order for order in orders_list if (order['parcelID'] == parcelID and order['status'] !='Delivered')]
 		if order:
