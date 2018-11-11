@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://travis-ci.org/MissKibetu/SendIT-API.svg?branch=ft-create-order-161827472)](https://travis-ci.org/MissKibetu/SendIT-API)
-[![Coverage Status](https://coveralls.io/repos/github/MissKibetu/SendIT-API/badge.svg?branch=ft-cancel-order-161837503)](https://coveralls.io/github/MissKibetu/SendIT-API?branch=ft-cancel-order-161837503)
+[![Coverage Status](https://coveralls.io/repos/github/MissKibetu/SendIT-API/badge.svg?branch=ch-order-creation-tests-161839122)](https://coveralls.io/github/MissKibetu/SendIT-API?branch=ch-order-creation-tests-161839122)
 
 ## The endpoints to be created should enable the user to
 
@@ -12,7 +12,7 @@
 * Get a specific parcel delivery order by ID
 * Cancel a parcel delivery order
 
-## Functioning endpoints:
+## Functioning endpoints
 
 | EndPoint                      	| Functionality                    				|  Actual routes                			|
 | :---                          	| :---:                        				    |  :---:                      			    |
@@ -22,9 +22,8 @@
 | GET /parcel order/<sender email>  | Fetch a single order details by sender email  |  /api/v1/all_orders/<string:sender_email> |
 | PUT /cancel order/<orderId>		| Cancel order (change status to cancelled)    	|  /api/v1/cancel/<int:parcelID>     		|
 
-
 ## Technology used
 
-- Python 3.7
-- Flask framework
-- Unittest for testing
+* Python 3.7
+* Flask framework
+* Unittest for testing
