@@ -1,6 +1,6 @@
 import unittest
 import json
-from api.version1.all_orders import app
+from api.version1.orders import app
 
 class TestOrders(unittest.TestCase):
 	"""This class tests the fetching of orders"""
@@ -41,12 +41,12 @@ class TestOrders(unittest.TestCase):
 		self.assertEqual(result.status_code, 200)
 
 	"""Test get orders by parcelID"""
-	def test_get_all_orders_by_parcelID(self):
+	def test_get_order_by_ID(self):
 		result = self.client.get('/api/v1/all_orders/1', data = json.dumps(self.orders_list), content_type='application/json')
 		self.assertEqual(result.status_code, 200)
 
 	"""Test to check that a message is returned if the parcelID does not exist"""
-	def test_get_all_orders_by_parcelID_2(self):
+	def test_get_order_by_ID_2(self):
 		result = self.client.get('/api/v1/all_orders/4', data = json.dumps(self.orders_list), content_type='application/json')
 		self.assertEqual(result.status_code, 200)
 

@@ -1,6 +1,6 @@
-from api.version1.all_orders import app
+from api.version1.orders import app
 from flask import jsonify
-from api.version1.all_orders.models import SendItOrders
+from api.version1.orders.models import SendItOrders
 
 ordersObject = SendItOrders()
 length = ordersObject.get_length()
@@ -27,8 +27,8 @@ def get_all_orders():
 """This route fetches the order with the id specified in the route"""
 
 @app.route('/api/v1/all_orders/<int:parcelID>', methods=['GET'])
-def get_all_orders_by_parcelID(parcelID):
-    orders = ordersObject.all_orders_by_parcelID(parcelID)
+def get_order_by_ID(parcelID):
+    orders = ordersObject.order_by_ID(parcelID)
     return jsonify({"orders: " :orders}), 200
 
 """This route fetches the orders from the email specified in the route"""
@@ -41,6 +41,6 @@ def get_all_orders_by_sender_email(sender_email):
 """This route cancels the order with the id specified in the route"""
 
 @app.route('/api/v1/cancel/<int:parcelID>', methods=['PUT'])
-def cancel_orders_by_parcelID(parcelID):
-    orders = ordersObject.cancel_orders(parcelID)
+def cancel_order_by_parcelID(parcelID):
+    orders = ordersObject.cancel_order(parcelID)
     return jsonify({"orders: " :orders}), 200
