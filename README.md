@@ -9,7 +9,7 @@
 * Create a parcel delivery order
 * Get all parcel delivery orders
 * Get a specific parcel delivery order by ID
-* Get a specific parcel delivery order by ID
+* Get a specific parcel delivery order by email
 * Cancel a parcel delivery order
 
 ## Functioning endpoints
@@ -42,7 +42,7 @@ $ cd SendIT-API
 ##### Create the virtualenv and activate it
 
 ```
- virtualenv venv
+$ virtualenv venv
 $ cd SendIT-API/venv/Scripts
 $ activate
 ```
@@ -57,4 +57,11 @@ $ pip install -r requirements.txt
 
 ```
 $ python run.py
+```
+
+##### link to Postman Documentation
+
+``` 
+https://documenter.getpostman.com/view/5785639/RzZAkJKv 
+
 ```
