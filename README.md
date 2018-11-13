@@ -61,7 +61,4 @@ $ python run.py
 
 ##### link to Postman Documentation
 
-``` 
-https://documenter.getpostman.com/view/5785639/RzZAkJKv 
-
-```
+[Click here for Postman documentation](https://documenter.getpostman.com/view/5785639/RzZAkJKv)
