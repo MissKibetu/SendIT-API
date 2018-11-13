@@ -27,3 +27,34 @@
 * Python 3.7
 * Flask framework
 * Unittest for testing
+
+## Testing the endpoints
+
+>To run and test SendIT-API, you will need to install python 3.6, Flask and Postman
+
+##### Clone the repository to your local environment
+
+```
+$ git clone https://github.com/MissKibetu/SendIT-API.git
+$ cd SendIT-API
+```
+
+##### Create the virtualenv and activate it
+
+```
+ virtualenv venv
+$ cd SendIT-API/venv/Scripts
+$ activate
+```
+
+##### Install dependencies in root folder
+
+```
+$ pip install -r requirements.txt
+```
+
+##### Run the app from the root folder
+
+```
+$ python run.py
+```

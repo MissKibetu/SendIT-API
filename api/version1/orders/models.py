@@ -27,9 +27,7 @@ orders_list = [
 	]   
 
 class SendItOrders():			
-	def get_length(self):
-		length = len(orders_list)
-		return length
+	
 
 	"""creates and adds new order to currents order list"""
 	def new_orders(self):

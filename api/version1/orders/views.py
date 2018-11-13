@@ -3,12 +3,6 @@ from flask import jsonify
 from api.version1.orders.models import SendItOrders
 
 ordersObject = SendItOrders()
-length = ordersObject.get_length()
-
-@app.route('/api/v1/home', methods=['GET'])
-def home():
-    welcome_message1 = "Hello! Welcome to SendIT - see orders here. "
-    return welcome_message1
 
 """This route creates and adds new order to currents order list"""
 
