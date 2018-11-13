@@ -2,8 +2,10 @@ import unittest
 import json
 from api.version1.orders import app
 
-class TestOrders(unittest.TestCase):
-	"""This class tests the fetching of orders"""
+class TestCancelOrders(unittest.TestCase):
+
+	"""This class tests canceling order function"""
+
 	def setUp(self):
 		self.api = app
 		self.client = self.api.test_client()
@@ -35,16 +37,15 @@ class TestOrders(unittest.TestCase):
 			} 
 	
 	"""Test cancel order for ID that exists and status ==delivered"""
+
 	def test_cancel_order_1(self):
 		result = self.client.put('/api/v1/cancel/1', data = json.dumps(self.order1), content_type='application/json')
-		self.assertEqual(result.status_code, 200)
+		self.assertEqual(result.status_code, 200)	
+		self.assertIn("order cannot be cancelled if already delivered or the ID does not exist", str(result.data))
 
 	"""Test cancel order for ID that exists and status !=delivered """
+
 	def test_cancel_order_2(self):
 		result = self.client.put('/api/v1/cancel/2', data = json.dumps(self.order2), content_type='application/json')
 		self.assertEqual(result.status_code, 200)
-
-	"""Test cancel order for ID that does not exist """
-	def test_cancel_order_3(self):
-		result = self.client.put('/api/v1/cancel/3', data = json.dumps(self.order2), content_type='application/json')
-		self.assertEqual(result.status_code, 200)
+		self.assertIn("order has been cancelled", str(result.data))

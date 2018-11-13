@@ -26,12 +26,11 @@ orders_list = [
 		}
 	]   
 
-class SendItOrders():			
-	
+class SendItOrders():				
 
 	"""creates and adds new order to currents order list"""
+
 	def new_orders(self):
-		
 		new_order = {
 			"parcelID" : orders_list[-1]['parcelID'] + 1,
 			"sender_name" : request.json['sender_name'],
@@ -57,12 +56,14 @@ class SendItOrders():
 		return orders_list[-1]
 
 	"""fetch all orders in the system"""
+
 	def all_orders(self):
 		if len(orders_list) == 0:
 			return {"message" : "No orders in the system"}
 		return orders_list
 
 	"""fetch specific order in the system by ID"""
+
 	def order_by_ID(self, parcelID):
 		order = [order for order in orders_list if order['parcelID'] == parcelID]
 		if order:
@@ -70,6 +71,7 @@ class SendItOrders():
 		return {"message" : "No orders with that ID"}
 
 	"""fetch all orders in the system by specific email"""
+
 	def all_orders_by_sender_email(self, sender_email):
 		order = [order for order in orders_list if order['sender_email'] == sender_email]
 		if order:
@@ -77,13 +79,14 @@ class SendItOrders():
 		return {"message" : "No orders made from that email address"}
 
 	"""cancel order specified by parcelID"""
+
 	def cancel_order(self, parcelID):
 		order = [order for order in orders_list if (order['parcelID'] == parcelID and order['status'] !='Delivered')]
 		if order:
 			order[0]["status"] = request.json["status"]
 			if order[0]["status"] == "Cancelled":
-				return order
-			
+				return "order has been cancelled"
 			order[0]["status"] = "Cancelled"
-			return order
-		return {"message" : "order cannot be cancelled"}
+			return "order has been cancelled"
+		return {"message" : "order cannot be cancelled if already delivered or the ID does not exist"}
+		

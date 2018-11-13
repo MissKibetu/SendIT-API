@@ -4,6 +4,7 @@ from api.version1.orders import app
 
 class TestOrders(unittest.TestCase):
 	"""This class tests order creation"""
+	
 	def setUp(self):
 		self.api = app
 		self.client = self.api.test_client()
@@ -40,14 +41,16 @@ class TestOrders(unittest.TestCase):
 		}
 
 	"""Test order creation"""
+
 	def test_create_order(self):
 		result = self.client.post('/api/v1/create_order', data = json.dumps(self.new_order1), content_type='application/json')
 		self.assertEqual(result.status_code, 201)
 
 	def test_create_order2(self):
 		result = self.client.post('/api/v1/create_order', data = json.dumps(self.new_order2), content_type='application/json')
-		self.assertEqual(result.status_code, 201)
+		self.assertIn("fields cannot be empty", str(result.data))
 
 	def test_create_order3(self):
 		result = self.client.post('/api/v1/create_order', data = json.dumps(self.new_order3), content_type='application/json')
-		self.assertEqual(result.status_code, 201) 
+		self.assertIn("weight cannot be zero ", str(result.data)) 
+		
