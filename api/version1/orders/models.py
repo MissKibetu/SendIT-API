@@ -26,33 +26,41 @@ orders_list = [
 		}
 	]   
 
-class SendItOrders():				
+class SendItOrders():	
 
 	"""creates and adds new order to currents order list"""
 
 	def new_orders(self):
-		new_order = {
-			"parcelID" : orders_list[-1]['parcelID'] + 1,
-			"sender_name" : request.json['sender_name'],
-			"sender_email" : request.json['sender_email'],
-			"pick_up" : request.json['pick_up'],
-			"drop_off" : request.json['drop_off'],
-			"recipient_name" : request.json['recipient_name'],
-			"weight" : request.json['weight'],
-			"cost" : 200,
-			"status" : "Order requested"
-		} 
+		sender_name = request.json['sender_name']
+		sender_email = request.json['sender_email']
+		pick_up = request.json['pick_up']
+		drop_off = request.json['drop_off']
+		recipient_name = request.json['recipient_name']
+		weight = request.json['weight']
 
-		orders_list.append(new_order)
-
-		if  orders_list[-1]["sender_name"] == "" or orders_list[-1]["sender_email"] == "" or orders_list[-1]["pick_up"] == "" or orders_list[-1]["drop_off"] == "" or orders_list[-1]["recipient_name"] == "" or orders_list[-1]["weight"] == "":
-			orders_list.pop()
+		if any(user_input == "" for user_input in (sender_name, sender_email, pick_up, drop_off, recipient_name,weight)):
 			return {"message" : "fields cannot be empty"}
 
-		if orders_list[-1]["weight"] <= 0:
-			orders_list.pop()
+
+		#if sender_name == "" or sender_email == "" or pick_up == "" or drop_off == "" or recipient_name == "" or weight == "":
+		#	return {"message" : "fields cannot be empty"}
+
+		if weight <= 0:
 			return {"message" : "weight cannot be zero "}
-			
+
+		new_order = {
+			"parcelID" : orders_list[-1]['parcelID'] + 1,
+			"sender_name" : sender_name,
+			"sender_email" : sender_email,
+			"pick_up" : pick_up,
+			"drop_off" : drop_off,
+			"recipient_name" : recipient_name,
+			"weight" : weight,
+			"cost" : 200,
+			"status" : "Order requested"
+		}
+
+		orders_list.append(new_order)
 		return orders_list[-1]
 
 	"""fetch all orders in the system"""
