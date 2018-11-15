@@ -59,6 +59,12 @@ $ pip install -r requirements.txt
 $ python run.py
 ```
 
+##### Command to run tests from the root folder
+
+```
+coverage run --source=api -m pytest && coverage report
+```
+
 ##### link to Postman Documentation
 
 [Click here for Postman documentation](https://documenter.getpostman.com/view/5785639/RzZAkJKv)
