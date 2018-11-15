@@ -49,3 +49,4 @@ class TestCancelOrders(unittest.TestCase):
 		result = self.client.put('/api/v1/cancel/2', data = json.dumps(self.order2), content_type='application/json')
 		self.assertEqual(result.status_code, 200)
 		self.assertIn("order has been cancelled", str(result.data))
+
