@@ -1,21 +1,10 @@
 import os
 import psycopg2
 
-DB_HOST ='localhost'
-DB_USERNAME = 'postgres'
-DB_NAME = 'Send-IT'
-DB_PASS = '1234'
-DB_PORT = '5432'
-
 url = "dbname='Send-IT' host='localhost'\
                 port='5432' user='postgres' password='1234'"
-
-db_url = os.getenv('DATABSE_URL')
-
-#create db connection                
+db_url = os.getenv('DATABSE_URL')               
 con = psycopg2.connect(url)
-
-#create the cursor
 cur = con.cursor()
 
 cur.execute(""" CREATE TABLE IF NOT EXISTS users(
@@ -42,4 +31,3 @@ cur.execute(""" CREATE TABLE IF NOT EXISTS orders(
 """)
 
 con.commit()
-con.close()
