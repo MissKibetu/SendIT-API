@@ -2,6 +2,7 @@ from api import app
 from api.db_config import con, cur, url, psycopg2
 from flask import request,jsonify
 from passlib.hash import sha256_crypt
+from flask_jwt_extended import create_access_token, create_refresh_token, jwt_required, jwt_refresh_token_required, get_jwt_identity, get_raw_jwt
 from api.v2.validations.models import Validations
 
 validationObject = Validations()
@@ -47,11 +48,12 @@ class User():
 
 			if sha256_crypt.verify(password, user_password):
 				role_check = validationObject.role_check(email)
-
+				access_token = create_access_token(identity = email)
 				if role_check == "admin":
-					return ("Welcome to the admin page. User your power wisely!")
+					return jsonify({'message': 'Welcome to the admin page. Access token = ' + access_token})
 
-				return ("Logged in as: " + email)
+				return jsonify({'message': 'Logged in as: ' + email + ". Access token = " + access_token})
+
 
 			return "Invalid credentials. Please try again."
 
