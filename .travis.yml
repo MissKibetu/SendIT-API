@@ -11,7 +11,6 @@ services:
 
 before_script:
  - psql -c 'CREATE DATABASE SendIT;' -U postgres
- - psql -c "CREATE USER postgres WITH PASSWORD '1234';" -U postgres
 
 
 script: coverage run --source=api -m pytest && coverage report
