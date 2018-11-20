@@ -10,7 +10,7 @@ services:
  - postgresql
 
 before_script:
- - psql -c 'create database Send-IT;' -U postgres
+ - psql -c 'create database IF NOT EXISTS Send-IT;' -U postgres
  - sudo -u postgres psql -c "ALTER USER postgres PASSWORD '1234';"
 
 script: coverage run --source=api -m pytest && coverage report
