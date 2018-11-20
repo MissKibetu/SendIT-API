@@ -1,4 +1,3 @@
-from api.v1.orders import app
-
+from api import app
 app.run(debug=True)
 

@@ -1,6 +1,6 @@
 import unittest
 import json
-from api.v1.orders import app
+from api import app
 
 class TestCancelOrders(unittest.TestCase):
 

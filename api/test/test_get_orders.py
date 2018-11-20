@@ -1,7 +1,6 @@
 import unittest
 import json
-from api.v1.orders import app
-
+from api import app
 class TestOrders(unittest.TestCase):
 	"""This class tests the fetching of orders"""
 	
