@@ -1,6 +1,6 @@
-from api.version1.orders import app
+from api.v1.orders import app
 from flask import jsonify
-from api.version1.orders.models import SendItOrders
+from api.v1.orders.models import SendItOrders
 
 ordersObject = SendItOrders()
 
