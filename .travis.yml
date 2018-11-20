@@ -11,6 +11,8 @@ services:
 
 before_script:
  - psql -c 'CREATE DATABASE SendIT;' -U postgres
+ - export DB_TEST="dbname='SendIT' host='localhost' port='5432' user='postgres' password= '' "
+ - export FLASK_ENV=testing
 
 
 script: coverage run --source=api -m pytest && coverage report
