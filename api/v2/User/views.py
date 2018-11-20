@@ -18,3 +18,4 @@ def login():
 def change_role(email):
     """ Change user role to Admin """ 
     return usersObject.admin_account(email)
+

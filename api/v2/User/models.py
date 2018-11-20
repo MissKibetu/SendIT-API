@@ -65,7 +65,7 @@ class User():
 	
 
 	def admin_account(self, email1):
-		
+
 		""" Change user role to admin """
 
 		email2 = request.json['email']
@@ -92,3 +92,5 @@ class User():
 			return "Admin rights required. You are not authorized to change user roles"
 					
 		return "You are not a registered user. Please confirm credentials"
+
+		

@@ -12,3 +12,4 @@ class Validations():
 		role_check = cur.execute ("SELECT role FROM users WHERE email = %s", ([email]))
 		role_check = cur.fetchone()[0]
 		return role_check
+
