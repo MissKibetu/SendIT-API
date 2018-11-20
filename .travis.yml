@@ -10,7 +10,7 @@ services:
  - postgresql
 
 before_script:
- - psql -c 'CREATE DATABASE IF NOT EXISTS Send-IT;' -U postgres
+ - psql -c 'CREATE DATABASE Send-IT;' -U postgres
  - psql -c "CREATE USER postgres WITH PASSWORD '1234';" -U postgres
 
 
