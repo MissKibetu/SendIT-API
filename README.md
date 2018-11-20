@@ -20,3 +20,10 @@
 ## Other requirements
 
 * implementation of token-based authentication using JSON web token (JWT) and the security of all routes using JSON web token.
+
+## Functioning endpoints
+
+| EndPoint                      	| Functionality                    				|  Actual routes                	|
+| :---                          	| :---:                        				    |  :---:                      	    |
+| POST /User Signup                	| Users can create accounts            			|  /api/v2/signup              		|
+| POST /User Signin                	| Users can log in to accounts            		|  /api/v2/signin              		|
