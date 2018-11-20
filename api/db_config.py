@@ -31,3 +31,4 @@ cur.execute(""" CREATE TABLE IF NOT EXISTS orders(
 """)
 
 con.commit()
+
