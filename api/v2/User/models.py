@@ -35,9 +35,12 @@ class User():
 		con.commit()
 		return ("Welcome " + name + ". You have been registered to SendIT" )
 
-	""" User Login. Redirect Admin and Customers to different pages.  """
+	
 	
 	def user_login(self):
+
+		""" User Login. Redirect Admin and Customers to different pages.  """
+
 		email = request.json['email']
 		password = str(request.json['password'] )
 		email_check = validationObject.email_check(email)
@@ -58,3 +61,34 @@ class User():
 			return "Invalid credentials. Please try again."
 
 		return "Invalid credentials. Please try again."
+
+	
+
+	def admin_account(self, email1):
+		
+		""" Change user role to admin """
+
+		email2 = request.json['email']
+		email_check = validationObject.email_check(email1)
+		email_check2 = validationObject.email_check(email2)
+		
+		if email_check:
+			role_check = validationObject.role_check(email1)
+			role = "admin"
+
+			if role_check == role:
+				if email_check2:
+					role_check2 = validationObject.role_check(email2)
+					
+					if role_check2 != role:
+						cur.execute("UPDATE users SET role = (%s) WHERE email = (%s)", (role, email2))
+						con.commit()
+						return (email2 + " role changed to admin")
+
+					return (email2 + " is already admin")
+
+				return "This email is unregistered."
+	
+			return "Admin rights required. You are not authorized to change user roles"
+					
+		return "You are not a registered user. Please confirm credentials"
