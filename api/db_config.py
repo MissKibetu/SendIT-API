@@ -1,8 +1,9 @@
 import os
 import psycopg2
 
-url = "dbname='Send-IT' host='localhost'\
+url = "dbname='SendIT' host='localhost'\
                 port='5432' user='postgres' password='1234'"
+                
 db_url = os.getenv('DATABSE_URL')               
 con = psycopg2.connect(url)
 cur = con.cursor()
