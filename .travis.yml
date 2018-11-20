@@ -6,6 +6,14 @@ python:
 install:
   - pip3 install -r requirements.txt
 
+services:
+ - postgresql
+
+before_script:
+ - psql -c 'create database Send-IT;' -U postgres
+ - sudo -u postgres psql -c "ALTER USER postgres PASSWORD '1234';"
+ - source .env
+
 script: coverage run --source=api -m pytest && coverage report
 
 after_success: coveralls
