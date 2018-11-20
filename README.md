@@ -1,8 +1,10 @@
 # SendIT-API
 
-## Database Integration
-
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Build Status](https://travis-ci.org/MissKibetu/SendIT-API.svg?branch=ft-signup-signin-162080580)](https://travis-ci.org/MissKibetu/SendIT-API)
+[![Coverage Status](https://coveralls.io/repos/github/MissKibetu/SendIT-API/badge.svg?branch=ft-signup-signin-162080580)](https://coveralls.io/github/MissKibetu/SendIT-API?branch=ft-signup-signin-162080580)
+
+## Database Integration
 
 ## The endpoints to be created should eneble
 
