@@ -1,6 +1,6 @@
 from api import app
 from flask import request,jsonify
-from api.v2.User.models import User
+from api.v2.User.user import User
 
 usersObject = User()
 

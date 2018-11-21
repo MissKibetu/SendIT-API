@@ -1,10 +1,9 @@
 import os
 import psycopg2
 
-url = "dbname='Send-IT' host='localhost' port='5432' user='postgres' password='1234'"
 
 db_url = os.getenv('DATABSE_URL')               
-con = psycopg2.connect(url)
+con = psycopg2.connect(db_url)
 cur = con.cursor()
 
 cur.execute(""" CREATE TABLE IF NOT EXISTS users(

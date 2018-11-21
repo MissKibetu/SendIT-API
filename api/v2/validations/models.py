@@ -4,12 +4,16 @@ from api.db_config import con, cur
 class Validations():
 
 	def email_check(self, email):
-		email_check = cur.execute ("SELECT * FROM users WHERE email = %s", ([email]))
-		email_check = cur.fetchone()
-		return email_check
+
+		""" Check if email provided has been registered in the system """
+
+		cur.execute ("SELECT * FROM users WHERE email = %s", ([email]))
+		return cur.fetchone()
 
 	def role_check(self, email):
-		role_check = cur.execute ("SELECT role FROM users WHERE email = %s", ([email]))
-		role_check = cur.fetchone()[0]
-		return role_check
+
+		""" Check the role assigned to a user account """
+
+		cur.execute ("SELECT role FROM users WHERE email = %s", ([email]))
+		return cur.fetchone()[0]
 
