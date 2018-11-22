@@ -34,7 +34,6 @@ class User():
 		cur.execute("INSERT INTO users (name, email, password, role) VALUES (%s, %s, %s, %s)", (name, email, password, role))
 		con.commit()
 		return ("Welcome " + name + ". You have been registered to SendIT" )
-
 	
 	
 	def user_login(self):
@@ -53,10 +52,12 @@ class User():
 				role_check = validationObject.role_check(email)
 				access_token = create_access_token(identity = email)
 				if role_check == "admin":
-					return jsonify({'message': 'Welcome to the admin page. Access token = ' + access_token})
-
-				return jsonify({'message': 'Logged in as: ' + email + ". Access token = " + access_token})
-
+					return ('Welcome to the admin page. Access token = ' + access_token)
+					
+				return jsonify({
+						"message" : "Logged in",
+						"token" : access_token
+					})
 
 			return "Invalid credentials. Please try again."
 

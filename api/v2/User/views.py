@@ -13,7 +13,7 @@ def register_user():
 @app.route('/api/v2/signin', methods=['POST'])
 def login():
     """ User signin """
-    return jsonify({"message": usersObject.user_login()}), 200
+    return usersObject.user_login(), 200
 
 @app.route('/api/v2/change_role_to_admin/<string:email>', methods=['PUT'])
 def change_role(email):
