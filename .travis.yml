@@ -6,6 +6,14 @@ python:
 install:
   - pip3 install -r requirements.txt
 
+services:
+ - postgresql
+
+before_script:
+ - psql -c 'create database send_it;' -U postgres
+ - export DATABSE_URL="dbname='send_it' host='localhost' port='5432' user='postgres' password= '' "
+ 
+
 script: coverage run --source=api -m pytest && coverage report
 
 after_success: coveralls

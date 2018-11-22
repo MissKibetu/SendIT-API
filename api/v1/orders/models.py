@@ -1,4 +1,4 @@
-from api.v1.orders import app
+from api import app
 from flask import request, jsonify
 
 orders_list = [
