@@ -14,3 +14,5 @@ jwt = JWTManager(app)
 
 import api.v1.orders.views   
 import api.v2.User.views
+import api.v2.OrderCreation.views
+
