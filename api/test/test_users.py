@@ -30,12 +30,7 @@ class TestUsers(unittest.TestCase):
 			"password": "password",
 			"confirm": "passw"
 		}
-		self.existing_user ={
-			"name": "Amy Lee",
-			"email": "amylee@test.com",
-			"password": "password",
-			"confirm": "password"
-		}
+		
 		self.valid_signin ={
 			"email": "amylee@test.com",
 			"password": "password"
@@ -62,10 +57,6 @@ class TestUsers(unittest.TestCase):
 	def test_pasword_mismatch_signup(self):
 		result = self.client.post('/api/v2/signup', data = json.dumps(self.pasword_mismatch), content_type='application/json')
 		self.assertIn("please confirm your password", str(result.data)) 
-
-	def test_existing_user_signup(self):
-		result = self.client.post('/api/v2/signup', data = json.dumps(self.existing_user), content_type='application/json')
-		self.assertIn("This email is already registered.", str(result.data)) 
 	
 	def test_valid_signin(self):
 		result = self.client.post('/api/v2/signin', data = json.dumps(self.valid_signin), content_type='application/json')
