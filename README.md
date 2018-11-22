@@ -2,6 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://travis-ci.org/MissKibetu/SendIT-API.svg?branch=ft-signup-signin-162080580)](https://travis-ci.org/MissKibetu/SendIT-API)
+[![Coverage Status](https://coveralls.io/repos/github/MissKibetu/SendIT-API/badge.svg?branch=ft-order-request-162159435)](https://coveralls.io/github/MissKibetu/SendIT-API?branch=ft-order-request-162159435)
 
 ## Database Integration
 
