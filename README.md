@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://travis-ci.org/MissKibetu/SendIT-API.svg?branch=ft-signup-signin-162080580)](https://travis-ci.org/MissKibetu/SendIT-API)
-[![Coverage Status](https://coveralls.io/repos/github/MissKibetu/SendIT-API/badge.svg?branch=ft-view-orders-162159675)](https://coveralls.io/github/MissKibetu/SendIT-API?branch=ft-view-orders-162159675)
+[![Coverage Status](https://coveralls.io/repos/github/MissKibetu/SendIT-API/badge.svg?branch=ft-update-orders-162159818)](https://coveralls.io/github/MissKibetu/SendIT-API?branch=ft-update-orders-162159818)
 
 ## Database Integration
 
@@ -23,9 +23,45 @@
 
 * implementation of token-based authentication using JSON web token (JWT) and the security of all routes using JSON web token.
 
-## Functioning endpoints
+## Technology used
 
-| EndPoint                      	| Functionality                    				|  Actual routes                	|
-| :---                          	| :---:                        				    |  :---:                      	    |
-| POST /User Signup                	| Users can create accounts            			|  /api/v2/signup              		|
-| POST /User Signin                	| Users can log in to accounts            		|  /api/v2/signin              		|
+* Python 3.7
+* Flask framework
+* Unittest for testing
+
+## Testing the endpoints
+
+>To run and test SendIT-API, you will need to install python 3.6, Flask and Postman
+
+##### Clone the repository to your local environment
+
+```
+$ git clone https://github.com/MissKibetu/SendIT-API.git
+$ cd SendIT-API
+```
+
+##### Create the virtualenv and activate it
+
+```
+$ virtualenv venv
+$ cd SendIT-API/venv/Scripts
+$ activate
+```
+
+##### Install dependencies in root folder
+
+```
+$ pip install -r requirements.txt
+```
+
+##### Run the app from the root folder
+
+```
+$ python run.py
+```
+
+##### Command to run tests from the root folder
+
+```
+coverage run --source=api -m pytest && coverage report
+```
