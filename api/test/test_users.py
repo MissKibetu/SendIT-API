@@ -31,10 +31,6 @@ class TestUsers(unittest.TestCase):
 			"confirm": "passw"
 		}
 		
-		self.valid_signin ={
-			"email": "amylee@test.com",
-			"password": "password"
-		}
 		self.invalid_password ={
 			"email": "amylee@test.com",
 			"password": "pass"
@@ -57,10 +53,6 @@ class TestUsers(unittest.TestCase):
 	def test_pasword_mismatch_signup(self):
 		result = self.client.post('/api/v2/signup', data = json.dumps(self.pasword_mismatch), content_type='application/json')
 		self.assertIn("please confirm your password", str(result.data)) 
-	
-	def test_valid_signin(self):
-		result = self.client.post('/api/v2/signin', data = json.dumps(self.valid_signin), content_type='application/json')
-		self.assertIn("Logged in", str(result.data)) 
 
 	def test_invalid_password_signin(self):
 		result = self.client.post('/api/v2/signin', data = json.dumps(self.invalid_password), content_type='application/json')
