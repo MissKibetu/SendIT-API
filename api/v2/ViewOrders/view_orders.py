@@ -1,6 +1,7 @@
 from api import app
 from api.db_config import con, cur
 from flask import request, jsonify
+from flask_jwt_extended import get_jwt_identity, jwt_required
 from api.v2.validations.models import Validations
 
 validationObject = Validations()
@@ -8,8 +9,9 @@ validationObject = Validations()
 class ViewOrders():
 	
 	""" Fetch all orders """
-
-	def get_my_orders(self,email):
+	@jwt_required
+	def get_my_orders(self):
+		email = get_jwt_identity()
 		email_check = validationObject.email_check(email)
 
 		if email_check:
@@ -19,7 +21,7 @@ class ViewOrders():
 			""" Users can only access their orders """
 
 			if role_check != role:
-				order_table = cur.execute ("SELECT * FROM orders WHERE sender_email = (%s)", ([email]))
+				order_table = cur.execute ("SELECT * FROM orders WHERE sender_email = '{}';".format(email))
 				order_table = cur.fetchall()	
 
 				if order_table:
@@ -54,7 +56,9 @@ class ViewOrders():
 
 	""" Fetch order by ID """
 
-	def get_order_by_id(self, email, parcelID):
+	@jwt_required
+	def get_order_by_id(self, parcelID):
+		email = get_jwt_identity()
 		email_check = validationObject.email_check(email)
 		
 		if email_check:
@@ -78,8 +82,11 @@ class ViewOrders():
 		return jsonify({"message": "unregistered email"})	
 
 	""" Fetch order by email """
-
-	def user_order_by_email(self, admin_email, user_email):
+	
+	@jwt_required
+	def user_order_by_email(self):
+		admin_email = get_jwt_identity()
+		user_email = request.json['user_email']
 		admin_email_check = validationObject.email_check(admin_email)
 			
 		if admin_email_check:
