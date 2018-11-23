@@ -1,6 +1,7 @@
 from api import app
 from api.db_config import con, cur
 from flask import request, jsonify
+from flask_jwt_extended import get_jwt_identity, jwt_required
 from api.v2.validations.models import Validations
 
 validationObject = Validations()
@@ -8,8 +9,9 @@ validationObject = Validations()
 class UpdateOrders():
 
 	""" User can update destination """
-
-	def change_destination(self, email):
+	@jwt_required
+	def change_destination(self):
+		email = get_jwt_identity()
 		drop_off = request.json['drop_off']
 		parcelID = request.json['parcelID']
 
@@ -40,8 +42,9 @@ class UpdateOrders():
 
 	
 	""" User can update destination """
-
-	def update_current_location(self, admin_email):
+	@jwt_required
+	def update_current_location(self):
+		admin_email = get_jwt_identity()
 		parcelID = request.json['parcelID']
 		current_location = request.json['current_location']
 		transit_status = "In transit"
