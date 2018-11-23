@@ -4,6 +4,7 @@ from flask import request,jsonify
 from passlib.hash import sha256_crypt
 from flask_jwt_extended import create_access_token, create_refresh_token, jwt_required, jwt_refresh_token_required, get_jwt_identity, get_raw_jwt
 from api.v2.validations.models import Validations
+import re
 
 validationObject = Validations()
 
@@ -18,6 +19,14 @@ class User():
 		confirm = request.json['confirm']
 		role = "user"
 
+		regex = "^[a-zA-Z0-9 ]*$"
+		if  not re.match(regex, name):
+			return {"message" : "Name cannot contain special characters"}     
+
+		regex = "^[\w]+[\d]?@[\w]+\.[\w]+$"
+		if not re.match(regex, email):
+			return {"message" : "Email format not valid"}
+
 		if any(user_input == "" for user_input in (name, email, password, confirm)):
 			return {"message" : "fields cannot be empty"}
 		
@@ -28,10 +37,10 @@ class User():
 
 		if email_check:
 			return "This email is already registered."
-		
-		
+			
 		password = sha256_crypt.encrypt(str(password))
-		cur.execute("INSERT INTO users (name, email, password, role) VALUES (%s, %s, %s, %s)", (name, email, password, role))
+		cur.execute("INSERT INTO users (name, email, password, role) \
+					VALUES (%s, %s, %s, %s)", (name, email, password, role))
 		con.commit()
 		return ("Welcome " + name + ". You have been registered to SendIT" )
 	
@@ -52,8 +61,10 @@ class User():
 				role_check = validationObject.role_check(email)
 				access_token = create_access_token(identity = email)
 				if role_check == "admin":
-					return ('Welcome to the admin page. Access token = ' + access_token)
-					
+					return jsonify({
+						"message" : "Welcome to the admin page",
+						"token" : access_token
+					})
 				return jsonify({
 						"message" : "Logged in",
 						"token" : access_token
