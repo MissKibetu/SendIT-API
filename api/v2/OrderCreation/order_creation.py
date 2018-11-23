@@ -1,13 +1,16 @@
 from api import app
 from api.db_config import con, cur
 from flask import request, jsonify
+from flask_jwt_extended import get_jwt_identity, jwt_required
 from api.v2.validations.models import Validations
 
 validationObject = Validations()
 
 class OrderCreation():
 
-	def order_request(self, email):
+	@jwt_required
+	def order_request(self):
+		email = get_jwt_identity()
 		email_check = validationObject.email_check(email)
 		pick_up = request.json['pick_up']
 		drop_off = request.json['drop_off']
@@ -25,7 +28,7 @@ class OrderCreation():
 			role = "admin"
 		
 			if role_check != role:
-				result = cur.execute ("SELECT name, email FROM users WHERE email = (%s)", ([email]))
+				result = cur.execute ("SELECT name, email FROM users WHERE email = '{}';".format(email))
 				result = cur.fetchall()
 
 				if result:
@@ -48,3 +51,5 @@ class OrderCreation():
 			return "Orders cannot be created on admin account"
 			
 		return "email not registered"
+
+		
