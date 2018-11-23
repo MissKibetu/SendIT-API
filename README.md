@@ -87,4 +87,4 @@ coverage run --source=api -m pytest && coverage report
 
 ##### Link to postman documentation
 
-[Click here to access postman docymentation](https://documenter.getpostman.com/view/5785639/RzZAkJKv)
+[Click here to access postman documentation](https://documenter.getpostman.com/view/5785639/RzZAkJKv)
